@@ -1,0 +1,9 @@
+.container{
+    margin-top: 50px;
+}
+
+.card-header{
+    background-color: #0277bd;
+    color: white;
+    font-weight: 300;
+}

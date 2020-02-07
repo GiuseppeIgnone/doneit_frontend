@@ -1,0 +1,68 @@
+<!-- Contacts -->
+<div class="container-fluid">
+    <div id="test">
+        <div id="content">
+            <ul class="list-group list-group-flush">
+                <div *ngFor="let p of personalCards">
+                    <li *ngIf="username !== p.user.username" class="list-group-item" (click)="openChat(p)"
+                        [ngClass]="{'bold': notifyMessageArrived(p)}">
+                        <img [src]="p.base64StringImage" class="md-avatar rounded-circle" alt="avatar image">
+                        {{p.user.username}}
+                        <span *ngIf=" notifyMessageArrived(p)" class="badge badge-danger ml-2">+1</span>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <button class="btn light-blue darken-3 float btn-block">Chat</button>
+    </div>
+</div>
+
+<!-- Box -->
+<div id="chat-content" *ngIf="!closeChat">
+
+    <div id="chat-inbox" *ngIf="showChat">
+
+        <div class="mesgs">
+            <div class="msg_history" #scrollMe>
+                <div class="incoming_msg" *ngFor="let c of currentChat">
+
+                    <div class="received_msg" *ngIf="isReceived(c)">
+                        <div class="received_withd_msg">
+                            <p>{{c.content}}</p>
+                            <span class="time_date"> </span>
+                        </div>
+                    </div>
+
+                    <div class="outgoing_msg" *ngIf="isSent(c)">
+                        <div class="sent_msg">
+                            <p>{{c.content}}</p>
+                            <span class="time_date"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="type_msg">
+                <div class="input_msg_write">
+                    <form>
+                        <div class="form-group">
+                            <textarea class="form-control" (keydown.enter)="sendMessage($event)" name="message"
+                                [(ngModel)]="message" id="exampleFormControlTextarea3" rows="2"
+                                placeholder="Scrivi qualcosa"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chat-bx">
+        <div class="btn">
+            <div class="row justify-content-between">
+                <div class="col-lg-11 text-center" (click)="handleChatBox()">{{activeUser}}</div>
+                <div class="col-lg-1"><i class="fa fa-times" (click)="closeChatBox()"></i></div>
+            </div>
+        </div>
+    </div>
+</div>

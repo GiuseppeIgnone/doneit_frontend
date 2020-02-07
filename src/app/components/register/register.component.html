@@ -1,0 +1,82 @@
+<div class="alert alert-warning text-center" *ngIf='errorRegister' [innerHTML]="errorRegister"></div>
+
+
+<div class="alert alert-success text-center" *ngIf='messageCode === 4'>Registrazione avvenuta con successo</div>
+
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-text">
+            <div class="container">
+
+                <form (ngSubmit)="handleRegister()" #loginForm="ngForm" class="text-center">
+                    <p class="h6">Non hai un account? Registrati</p>
+
+                    <div class="form-row mb-4">
+                        <div class="col">
+                            <!-- First name -->
+                            <input type="text" class="form-control" placeholder="Nome" [(ngModel)]="user.name"
+                                name="name">
+                        </div>
+                        <div class="col">
+                            <!-- Last name -->
+                            <input type="text" class="form-control" placeholder="Cognome" [(ngModel)]=user.surname
+                                name="surname">
+                        </div>
+                    </div>
+
+                    <input type="text" class="form-control mb-4" name="username" [(ngModel)]="user.username"
+                        placeholder="Username">
+
+                    <small class="form-text text-muted mb-4">
+                        Solo caratteri alfanumerici e/o underscore.
+                    </small>
+
+
+                    <!-- E-mail -->
+                    <input type="email" class="form-control mb-4" placeholder="E-mail" [(ngModel)]=user.email
+                        name="email">
+
+                    <!-- Password -->
+                    <input type="password" name="password" [(ngModel)]="user.password" id="defaultRegisterFormPassword"
+                        class="form-control" placeholder="Password"
+                        aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                    <small class="form-text text-muted mb-4">
+                        Almeno 8 caratteri, di cui almeno una maiuscola, una minuscola, un numero e un carattere
+                        speciale.
+                    </small>
+
+                    <input type="password" name="password" [(ngModel)]="confirmPassword" class="form-control"
+                        placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock"
+                        name="confirmPassword">
+                    <small id="defaultRegisterFormPasswordHelpBlock2" class="form-text text-muted mb-4">
+                        Conferma Password
+                    </small>
+
+                    <!-- Sign up button -->
+                    <button type="submit" class="btn btn-success my-4 btn-block">Registrati</button>
+                </form>
+                <!-- Default form register -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <form (ngSubmit)="handleRegister()" #loginForm="ngForm">
+                <div class="alert alert-warning" *ngIf='errorRegister'>{{errorRegister}}</div>
+                <fieldset class="form-group">
+                    <label>Username: </label>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Password: </label>
+                    <input type="password" class="form-control" name="password" [(ngModel)]="user.password">
+                </fieldset>
+                <button type="submit" class="btn btn-success">Registrati</button>
+            </form> -->

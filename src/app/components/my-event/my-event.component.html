@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row justify-content-center no-gutters" style="margin: 0px;">
+        <div class="col-lg-9 no-gutters" style="background-color: #fafafa;">
+            <nav class="navbar navbar-expand-lg navbar-dark primary-color light-blue darken-3">
+                <a class="navbar-brand" href="#">Eventi di @{{username}}</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'active'}">
+                            <a class="nav-link" (click)="getMyEventList('active')">In corso</a>
+                        </li>
+                        <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'joined'}">
+                            <a class="nav-link" (click)="getJoinedEvents()">Seguiti</a>
+                        </li>
+                        <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'ended'}">
+                            <a class="nav-link" (click)="getMyEventList('ended')">Terminati</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div style="margin: 25px" *ngIf="activatedBoard === 'active'">
+                <div *ngFor="let e of myEventsList">
+                    <app-event-card (messageEvent)="openMap($event)"
+                        (messageEventPartecipant)="openPartecipantModal($event)" [eventPost]=e [personal]=true>
+                    </app-event-card>
+                </div>
+            </div>
+            <div style="margin: 25px" *ngIf="activatedBoard === 'joined'">
+                <div *ngFor="let e of myJoinedEventList">
+                    <app-event-card (messageEvent)="openMap($event)"
+                        (messageEventPartecipant)="openPartecipantModal($event)" [eventPost]=e [personal]=true>
+                    </app-event-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="currentTodo" (click)="closeModal()" id="myModal" class="modal">
+    <div class="modal-content">
+        <span (click)="closeModal()" class="close">×</span>
+        <span id="modal-title">Utenti proposti</span>
+        <div class="modal-list">
+            <div class="row" *ngFor="let proposal of currentTodo.proposals">
+                <div class="col-4 modal-user">{{proposal.user.username}}</div>
+                <div class="col-4" *ngIf="proposal.state == 'in progress'"><button (click)="acceptProposal(proposal)"
+                        class="btn btn-success">accetta</button></div>
+                <div class="col-4" *ngIf="proposal.state == 'in progress'"><button (click)="refuseProposal(proposal)"
+                        class="btn btn-danger">rifiuta</button></div>
+                <div class="col-8" *ngIf="proposal.state == 'refused'"><b>Hai rifiutato questo contatto </b> <a
+                        (click)="undoRefuse(proposal)">Annulla</a></div>
+                <div class="col-8" *ngIf="proposal.state == 'accepted'"><b>Questa persona sta portando a termine il tuo
+                        todo</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div (click)="closeMap()" *ngIf="isMapOpen" id="myModal" class="modal">
+    <div class="modal-content">
+        <span (click)="closeMap()" class="close">×</span>
+        <span id="modal-title">Mappa</span>
+        <iframe height="450" frameborder="0" style="border:0" [src]='sanitizeUrl()' allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<div (click)="closePartecipantsModal()" *ngIf="isPartecipantsModalOpen" class="modal">
+    <div class="modal-content">
+        <span class="close" (click)="closePartecipantsModal()" *>×</span>
+        <span id="modal-title">Partecipanti</span>
+
+        <ul class="list-group list-group-flush" *ngFor="let p of partecipants">
+            <li class="list-group-item">{{p.user.username}}</li>
+        </ul>
+
+    </div>
+</div>

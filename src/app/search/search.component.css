@@ -1,0 +1,40 @@
+@media screen and (min-width: 992px) {
+    .container-fluid{
+        margin-left: 13vw; 
+        width: 87vw !important;
+    }
+    
+  }
+
+::ng-deep  .mat-form-field-infix {
+    padding: 0em 0;
+    border: 0px;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-wrapper{
+    padding: 0px !important;
+  }
+  
+
+  input{
+      height: 250px;
+  }
+
+  ::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: white !important;
+   }
+  
+   ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: white !important;
+  } 
+  
+  ::ng-deep.mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: white !important;;
+  }
+
+  ::ng-deep.cdk-overlay-pane{
+      margin-top: 5px !important;
+  }

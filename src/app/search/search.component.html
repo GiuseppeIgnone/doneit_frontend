@@ -1,0 +1,11 @@
+<mat-form-field style="height: 35px; width: 275px; color: aliceblue;">
+    <form (submit)=confirmSearch(searchString)>
+        <input matInput [(ngModel)]="searchString" name="searchString" [matAutocomplete]="auto" (input)="search()"
+            (change)="reset()">
+    </form>
+</mat-form-field>
+<i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
+<mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of options" [value]=" option" (click)=confirmSearch(option)>{{option}}
+    </mat-option>
+</mat-autocomplete>

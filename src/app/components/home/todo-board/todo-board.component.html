@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-12 no-gutters" style="background-color: white;">
+            <div *ngFor="let t of todoList">
+                <div *ngIf="personal">
+                    <app-my-todo-card [todo]='t'></app-my-todo-card>
+                </div>
+                <div *ngIf="!personal">
+                    <app-todo-card (messageEvent)="openModal($event)" [todo]="t"></app-todo-card>
+                </div>
+
+                <div style="height: 20px; background-color: #fafafa;"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="currentTodo" (click)="closeModal()" id="myModal" class="modal">
+    <div class="modal-content">
+      <span (click)="closeModal()" class="close">×</span>
+      <span id="modal-title">Utenti proposti</span>
+      <div class="modal-list">
+        <div class="row" *ngFor="let proposal of currentTodo.proposals">
+          <div class = "modal-user" >{{proposal.user.username}}</div>
+        </div>
+        </div>
+      </div>
+</div>
+  

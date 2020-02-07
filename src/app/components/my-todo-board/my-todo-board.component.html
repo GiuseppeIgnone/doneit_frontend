@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row justify-content-center no-gutters" style="margin: 0px;">
+    <div class="col-lg-9 no-gutters" style="background-color: #fafafa;">
+      <nav class="navbar navbar-expand-lg navbar-dark primary-color light-blue darken-3">
+        <a class="navbar-brand" href="#">Todo di {{username}}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'published'}">
+              <a class="nav-link" (click)="getMyTodoList('published')">In corso</a>
+            </li>
+            <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'accepted'}">
+              <a class="nav-link" (click)="getMyTodoList('accepted')">Accettati</a>
+            </li>
+            <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'completed'}">
+              <a class="nav-link" (click)="getMyTodoList('completed')">Conclusi</a>
+            </li>
+            <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'pending'}">
+              <a class="nav-link" (click)="getJoinedTodoList()">In attesa</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div style="margin: 25px">
+        <div *ngFor="let t of todoList">
+          <app-my-todo-card (messageEvent)="receiveMessage($event)" [todo]="t"></app-my-todo-card>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-3"></div>
+    <div class="col-2"><a (click)="getMyTodoList('published')">PUBLISHED</a></div>
+    <div class="col-2"><a (click)="getMyTodoList('accepted')">ACCEPTED</a></div>
+    <div class="col-2"><a (click)="getMyTodoList('completed')">TERMINATED</a></div>
+    <div class="col-3"></div>
+    <br><br>
+    <div class="col-sm-12 no-gutters" style="background-color: white;">
+      <div *ngFor="let t of todoList">
+        <app-my-todo-card (messageEvent)="receiveMessage($event)" [todo]="t"></app-my-todo-card>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+
+<div *ngIf="currentTodo" (click)="closeModal()" id="myModal" class="modal">
+  <div class="modal-content">
+    <span (click)="closeModal()" class="close">×</span>
+    <span id="modal-title">Utenti proposti</span>
+    <div class="modal-list">
+      <div class="row" *ngFor="let proposal of currentTodo.proposals">
+        <div class="col-4 modal-user">{{proposal.user.username}}</div>
+
+        <div class="col-4" *ngIf="proposal.state == 'in progress'"><button (click)="acceptProposal(proposal)"
+            class="btn btn-success">accetta</button></div>
+        <div class="col-4" *ngIf="proposal.state == 'in progress'"><button (click)="refuseProposal(proposal)"
+            class="btn btn-danger">rifiuta</button></div>
+
+        <div class="col-8" *ngIf="proposal.state == 'refused'"><b>Hai rifiutato questo contatto </b> <a
+            (click)="undoRefuse(proposal)">Annulla</a></div>
+        <div class="col-8" *ngIf="proposal.state == 'accepted'"><b>Questa persona sta portando a termine il tuo
+            todo</b>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

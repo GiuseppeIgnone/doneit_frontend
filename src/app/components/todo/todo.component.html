@@ -1,0 +1,48 @@
+<div *ngIf="!todoId" class="container">
+    <form (ngSubmit)='handleTodoCreation()'>
+        <fieldset class="form-group">
+            <label>Titolo: </label>
+            <input type="text" class="form-control" name="title" [(ngModel)]='todo.title'>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Descrizione: </label>
+            <input type="text" class="form-control" name="description" [(ngModel)]='todo.description'>
+        </fieldset>
+
+        
+        <fieldset class = "form-group">
+            <label>Data di scadenza: </label>
+            <input type = "date" name = "Scadenza" [(ngModel)] = "todo.expirationDate">
+        </fieldset>
+        
+        <fieldset class = "form-group">
+            <select class="browser-default custom-select custom-select-lg mb-3" [(ngModel)]="todo.category" name="selectedValue">
+                <option *ngFor="let category of categories" [ngValue]="category">{{category.name}} ({{category.cfuPrice}} cfu)</option>
+            </select>
+        </fieldset>
+
+        <div style="text-align: right;">
+            <button *ngIf="!todoId" type="submit" class="btn btn-success">Crea</button>
+        </div>
+    </form>
+</div>
+
+
+<h1 *ngIf="todoId">Aggiorna Todo</h1>
+
+<div class="container">
+    <form *ngIf="todoId" (ngSubmit)='handleTodoUpdate()'>
+        <fieldset class="form-group">
+            <label>Titolo: </label>
+            <input type="text" class="form-control" name="title" [(ngModel)]='todo.title'>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Descrizione: </label>
+            <input type="text" class="form-control" name="description" [(ngModel)]='todo.description'>
+        </fieldset>
+
+        <button *ngIf="todoId" type="submit" class="btn btn-success">Aggiorna</button>
+    </form>
+</div>

@@ -1,0 +1,69 @@
+<div class="container" id="test">
+    <div id="content">
+
+        <div>
+            <div class="list-group-flush">
+                <div class="list-group-item" routerLink="/home" routerLinkActive="active-item"
+                    (mouseover)="selectActive(0)" (mouseout)="selectActive(-1)">
+                    <span [ngClass]="{'default-fa': iconNumber != 0, 'active-fa': iconNumber === 0}">
+                        <i class="fa fa-clipboard" routerLinkActive="active-fa"></i>
+                    </span>
+                    Bacheca
+                </div>
+
+                <div class="list-group-item" routerLink={{getMyProfileLink()}} routerLinkActive="active-item"
+                    (mouseover)="selectActive(1)" (mouseout)="selectActive(-1)">
+
+                    <span [ngClass]="{'default-fa': iconNumber != 1, 'active-fa': iconNumber === 1}">
+                        <i class="fa fa-user-circle" routerLinkActive="active-fa"></i>
+                    </span>
+                    Il mio profilo
+
+                </div>
+                <div class="list-group-item" routerLink="/my-todo-board" routerLinkActive="active-item"
+                    (mouseover)="selectActive(2)" (mouseout)="selectActive(-1)">
+
+                    <span [ngClass]="{'default-fa': iconNumber != 2, 'active-fa': iconNumber === 2}">
+                        <i class="fa fa-id-badge" routerLinkActive="active-fa"></i>
+                    </span>
+
+                    I miei Todo
+
+                </div>
+
+                <div class="list-group-item" routerLink="/my-events-board" routerLinkActive="active-item"
+                    (mouseover)="selectActive(5)" (mouseout)="selectActive(-1)">
+
+                    <span [ngClass]="{'default-fa': iconNumber != 5, 'active-fa': iconNumber === 5}">
+                        <i class="fa fa-calendar" routerLinkActive="active-fa"></i>
+                    </span>
+
+                    I miei Eventi
+
+                </div>
+
+
+                <div class="list-group-item" routerLink="/chat" routerLinkActive="active-item"
+                    (mouseover)="selectActive(3)" (mouseout)="selectActive(-1)">
+
+                    <span [ngClass]="{'default-fa': iconNumber != 3, 'active-fa': iconNumber === 3}">
+                        <i class="fa fa-comment" routerLinkActive="active-fa"></i>
+                    </span>
+
+                    Chat
+                </div>
+
+                <div routerLink="/logout" class="list-group-item" (mouseover)="selectActive(4)"
+                    (mouseout)="selectActive(-1)">
+
+                    <span [ngClass]="{'default-fa': iconNumber != 4, 'active-fa': iconNumber === 4}">
+                        <i class="fa fa-sign-out" routerLinkActive="active-fa"></i>
+                    </span>
+                    Logout
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

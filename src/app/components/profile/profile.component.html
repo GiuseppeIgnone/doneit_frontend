@@ -1,0 +1,88 @@
+<div class="container-fluid">
+
+    <div id="user-card" class="row justify-content-center">
+        <div class="col-xl-9">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-lg-4 text-center align-self-center">
+                        <img *ngIf="personalCard.imageUrl" [src]="personalCard.imageUrl" class="rounded-circle"
+                            height="200px" width="200px">
+                    </div>
+                    <div class="col-lg-6 no-gutters align-self-center">
+                        <div class="card-body text-left">
+                            <h2 class="card-title text-center">@{{personalCard.user.username}}
+                            </h2>
+                            <h6 class="card-title text-center">{{personalCard.university}}
+                            </h6>
+                            <h6 class="card-title text-center">{{personalCard.faculty}}
+                            </h6>
+
+
+                            <div class="row justify-content-center">
+                                <div class="col-lg-3" data-toggle="modal" data-target="#basicExampleModal"
+                                    (click)="changePanel(0)">
+                                    <h4 *ngIf="followers" class="text-center">{{followers.length}} F</h4>
+                                    <h4 *ngIf="!followers" class="text-center">0 F</h4>
+                                </div>
+                                <div class="col-lg-3" data-toggle="modal" data-target="#basicExampleModal"
+                                    (click)="changePanel(1)">
+                                    <h4 *ngIf="following" class="text-center">{{following.length}} S</h4>
+                                    <h4 *ngIf="!following" class="text-center">0 S</h4>
+                                </div>
+                                <div class="col-lg-3">
+                                    <h4 class="text-center">0 T</h4>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <app-profile-board [username] = personalCard.user.username></app-profile-board>
+   
+</div>
+
+
+<div class="modal fade" style="margin-top: 100px;" id="basicExampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body" style="padding: 0px;">
+                <div class="text-center">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a (click)="changePanel(0)"
+                                    [ngClass]="{'nav-link': true, 'active': showCorrectPanel === 0}">Followers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a (click)="changePanel(1)"
+                                    [ngClass]="{'nav-link': true, 'active': showCorrectPanel === 1}">Seguiti</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div *ngIf="showCorrectPanel === 0" class="card-body">
+                        <hr>
+                        <div *ngFor="let u of followers">
+                            <app-list-item-user [user]="u"></app-list-item-user>
+                            <hr>
+                        </div>
+                    </div>
+                    <div *ngIf="showCorrectPanel === 1" class="card-body">
+                        <hr>
+                        <div *ngFor="let u of following">
+                            <app-list-item-user [user]="u"></app-list-item-user>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

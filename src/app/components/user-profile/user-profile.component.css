@@ -1,0 +1,60 @@
+@media screen and (min-width: 992px) {
+    .container-fluid{
+        margin-left: 13vw; 
+        width: 74vw !important;
+    }
+    
+  }
+
+
+.img{
+    height: 250px !important;
+    width: 250px !important;
+    border-radius: 10px;
+}
+
+#user-card{
+    margin-top: 50px;
+}
+
+#user-board{
+    margin-top: 25px;
+}
+
+#username{
+    padding-top: 15px;
+}
+
+.container-fluid{
+    padding: 0px !important;
+}
+
+.card-text{
+    padding: 25px;
+}
+
+.fa-user-plus{
+    margin-left: 10px;
+    color: #f44c36 !important;
+    font-size: 2rem !important;
+}
+
+.fa{
+    font-size: 1.5rem;
+    margin-right: 10px;
+    color: gray;
+}
+
+.list-group-item{
+    border-bottom: none !important;
+}
+
+.list-group{
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#user-card{
+    margin-top: 50px;
+}

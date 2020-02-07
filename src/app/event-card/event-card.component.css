@@ -1,0 +1,46 @@
+#todo-title{
+    margin: 30px;
+}
+
+#follow-todo{
+    margin: 12px;
+}
+
+#todo-user{
+    color: black;
+    font-weight: bold;
+}
+
+#time{
+    font-size: 1rem;
+    color: #7c7c7c;
+}
+
+#info-todo{
+    font-size: 1rem;
+    color: #7c7c7c;
+}
+
+
+.container{
+    padding: 0px !important;
+    margin-bottom: 10px;
+}
+
+
+@media screen and (min-width: 1200px) { 
+ #icon-div2{
+        text-align: left !important;
+        padding: 2px !important;
+        margin-top:10px !important;
+    }
+ }
+
+ #description-text{
+     margin: 12px !important;
+ }
+
+ .card-body{
+    background-color: white;
+ }
+

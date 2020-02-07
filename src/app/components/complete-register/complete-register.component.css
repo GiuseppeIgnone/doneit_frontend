@@ -1,0 +1,33 @@
+.container-fluid{
+    margin-top: 25px;
+    
+}
+
+form{
+    padding-top: 0px !important;
+}
+
+
+input{
+
+    padding: 10px;
+}
+
+#profile_image{
+    margin-bottom: 25px;
+}
+
+textarea{
+    padding: 10px;
+}
+
+.background{
+    position: fixed;
+    top: 65%;
+    left: 0;
+    background-color: #0277bd;
+    width: 100%;
+    z-index: -1;
+    height: 100%;
+
+}

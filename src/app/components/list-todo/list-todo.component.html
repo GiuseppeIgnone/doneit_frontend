@@ -1,0 +1,18 @@
+<div class="container" *ngIf="todo">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Target Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of todo">
+                <td>{{t.title}}</td>
+                <td>{{t.description}}</td>
+                <td><button (click)="updateTodo(t.id)" class="btn  btn-success">Update</button></td>
+                <td><button (click)="deleteTodo(t.id)" class="btn  btn-warning">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

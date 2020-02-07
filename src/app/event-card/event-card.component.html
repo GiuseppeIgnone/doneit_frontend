@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="text-center">
+        <div class="card-header" style="background-color: #fafafa;">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active">Evento</a>
+                </li>
+                <li class="nav-item nav-link" *ngIf="!personal && !alreadyPartecipated && !isCreatedByUser()">
+                    <a class="text-primary" (click)="joinEvent()">Partecipa</a>
+                </li>
+                <li class="nav-item nav-link" *ngIf="!personal && alreadyPartecipated && !isCreatedByUser()">
+                    <a class="text-warning">Partecipi già</a>
+                </li>
+                <li class="nav-item nav-link" *ngIf="!personal && isCreatedByUser()">
+                    <a class="text-danger">Creato da Te</a>
+                </li>
+
+                <li class="nav-item nav-link" *ngIf="!personal">
+                    <a class="text-success">Feedback</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div>
+                <div class="row align-items-center ">
+                    <div class="col-lg-3">
+                        <a class="nav-link p-0" routerLink="/show-profile/{{eventPost.user.username}}">
+                            <img src=" https://ptetutorials.com/images/user-profile.png" class="rounded-circle"
+                                height="50px" width="50px">
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <h5 style="color: #01579b;">{{eventPost.user.username}}</h5>
+                    </div>
+                    <div class="col-lg-3">
+                        <h5 id="time">{{eventPost.date | date: 'dd/MM/yyyy'}}</h5>
+                    </div>
+                </div>
+
+                <div class="row align-items-center" id="todo-title">
+                    <div class="col-sm-12">
+                        <h5>{{eventPost.title}}</h5>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <textarea readonly class="form-control" id="exampleFormControlTextarea3" rows="3"
+                                style="padding: 10px; border-radius: 10px;">{{eventPost.description}}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-between align-items-center">
+                    <a id="info-todo" (click)="openPartecipantsModal()"
+                        class="col-lg-7"><b>{{eventPost.eventPartecipations.length}}</b> persone
+                        partecipano a questo evento </a>
+
+
+                    <div id="icon-div2" class="col-lg-3">
+                        <span style="font-size: 2rem;" *ngIf="personal">
+                            <span style="color: #d34545">
+                                <a><i class="fa fa-times"></i></a>
+                            </span>
+                        </span>
+                        <span id="follow-todo" style="font-size: 2rem;" *ngIf="personal">
+                            <span style="color: #f39200">
+                                <a><i class="fa fa-edit"></i></a>
+                            </span>
+                        </span>
+                        <span style="font-size: 2rem;">
+                            <span style="color: #4a8bc9">
+                                <a (click)="openMap()" title="{{eventPost.place}}"><i class="fa fa-map-marker"
+                                        aria-hidden="true"></i></a>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

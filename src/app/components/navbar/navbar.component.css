@@ -1,0 +1,91 @@
+.hm-gradient {
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+}
+.darken-grey-text {
+    color: #2E2E2E;
+}
+
+.navbar .dropdown-menu a:hover {
+    background-color: #01579b !important;
+}
+.darken-grey-text {
+    color: #2E2E2E;
+}
+.dropdown-item{
+    margin-left: 3%;
+    width: 95%;
+    margin-right: 3%;
+    border-radius: 5%;
+}
+
+#searchbar{
+    width: 100% !important;
+}
+
+#search-input{
+    width: 400px !important;
+}
+
+#searchbar-form{
+    margin-right: 0px !important;
+}
+
+#sidebar-btn{
+    margin-right: 10px;
+}
+
+.md-avatar {
+    vertical-align: middle;
+    width: 35px;
+    height: 35px;
+    margin-right: 12px;
+}
+
+nav{
+    z-index: 1;
+}
+
+#floating-btn{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    margin: 5px;
+}
+
+#bar-btn{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.xyz { 
+    background-size: auto; 
+    text-align: center; 
+    padding-top: 100px; 
+} 
+.btn-circle.btn-sm { 
+    width: 30px; 
+    height: 30px; 
+    padding: 6px 0px; 
+    border-radius: 15px; 
+    font-size: 8px; 
+    text-align: center; 
+} 
+.btn-circle.btn-md { 
+    width: 50px; 
+    height: 50px; 
+    padding: 7px 10px; 
+    border-radius: 25px; 
+    font-size: 10px; 
+    text-align: center; 
+} 
+.btn-circle.btn-xl { 
+    width: 50px; 
+    height: 50px; 
+    padding: 10px 16px; 
+    border-radius: 35px; 
+    font-size: 12px; 
+    text-align: center; 
+} 

@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="text-center">
+        <div class="card-header" style="background-color: #fafafa;">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a [ngClass]="{'nav-link': true, 'active': showCorrectBody === 1}" (click)="changeBody(3)"
+                        (click)="changeBody(1)">Todo</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                    <a [ngClass]="{'nav-link': true, 'active': showCorrectBody === 3}"
+                        (click)="changeBody(3)">Feedback</a>
+                </li> -->
+            </ul>
+        </div>
+        <div class="card-body" style="background-color: #ffffff;">
+
+
+            <div *ngIf="showCorrectBody === 1">
+                <div class="row align-items-center ">
+                    <div class="col-xl-3">
+                        <a class="nav-link p-0" href="#">
+                            <img src=" https://ptetutorials.com/images/user-profile.png" class="rounded-circle"
+                                height="50px" width="50px">
+                        </a>
+                    </div>
+                    <div class="col-xl-6">
+                        <h5 style="color: #01579b;">{{todo.user.username}}</h5>
+                    </div>
+                    <div class="col-xl-3">
+                        <h5 id="time">2 minuti fa</h5>
+                    </div>
+                </div>
+
+                <div class="row align-items-center" id="todo-title">
+                    <div class="col-sm-12">
+                        <h5>{{todo.title}}</h5>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <textarea readonly class="form-control" id="exampleFormControlTextarea3" rows="3"
+                                style="padding: 10px; border-radius: 10px;">{{todo.description}}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center ">
+                    <div *ngIf="!acceptedUser" id="info-todo" class="col-xl-4"><a (click)="sendMessage()"><b>{{getProponentsNumber()}}</b> persone si sono proposte</a></div>
+                    <div *ngIf="acceptedUser" id="info-todo" class="col-xl-4">{{acceptedUser.username}} sta portando a termine questo todo  <a  (click) = "undoAcceptProposal(todo)"><b>Annulla</b></a></div>
+                    <div class="col-xl-4">
+                    </div>
+                    <div id="icon-div1" class="col-xl-2">
+                        <span id="follow-todo" style="font-size: 2rem;">
+                            <span style="color: #f39200">
+                                <a><i class="fa fa-edit"></i></a>
+                            </span>
+                        </span>
+                    </div>
+                    <div id="icon-div2" class="col-xl-2">
+                        <span style="font-size: 2rem;">
+                            <span style="color: #d34545">
+                                <a><i class="fa fa-times"></i></a>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

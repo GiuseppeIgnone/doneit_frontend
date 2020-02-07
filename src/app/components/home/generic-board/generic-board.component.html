@@ -1,0 +1,52 @@
+<div class="container-fluid" style="padding: 0px; background-color: #fafafa;">
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color light-blue darken-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 0}">
+                    <a class="nav-link" (click)= "showBoard(0)">Todo</a>
+                </li>
+                <li class = "nav-item" [ngClass]="{'nav-item': true, 'active': activatedBoard === 1}">
+                    <a class="nav-link" (click) = "showBoard(1)">Eventi</a>
+                </li>
+              
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a data-toggle="modal" data-target="#basicExampleModal"> <i class="fa fa-plus-circle"
+                            style="color: whitesmoke; font-size: 1.5rem;"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div style="padding: 25px">
+        <app-todo-board *ngIf= "activatedBoard === 0"></app-todo-board>
+        <app-event-board *ngIf= "activatedBoard === 1"></app-event-board>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div (click) = "closeModal()" class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cosa vuoi creare?</h5>
+                <button (click) = "closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-create-form></app-create-form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- (clickOutside)="onClickedOutsideModal($event)" -->

@@ -1,0 +1,46 @@
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark light-blue darken-3 lighten-1 sticky-top">
+    <a class="navbar-brand" href="#">Done It</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+        aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+
+        <form (ngSubmit)="handleLogin()" #loginForm="ngForm" class="form-inline ml-auto">
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2" [(ngModel)]="user.username" name="username" type="text"
+                    placeholder="Username">
+                <input class="form-control mr-sm-2" [(ngModel)]="user.password" name="password" type="password"
+                    placeholder="Password">
+                <button type="submit" class="btn btn-outline-white btn-sm my-0">Login</button>
+            </div>
+        </form>
+    </div>
+</nav>
+
+<div id="test" class="container-fluid h-100 row justify-content-center no-gutters"> 
+
+    <!-- <div class="col-xl-4 align-self-center">
+                <img id="doneit-image"
+                    src="https://km0digital.it/wp-content/uploads/2019/05/Comunicazione-SociaL-Media-1024x952.jpg"
+                    class="img-fluid" alt="Responsive image">
+            </div> -->
+
+          
+    <app-register></app-register>
+
+
+
+</div>
+
+<div class="background">
+</div> 
+
+
+<!--
+<input ngx-google-places-autocomplete [options]="{
+    types: [],
+    componentRestrictions: { country: 'IT' }
+    }" #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+
+-->

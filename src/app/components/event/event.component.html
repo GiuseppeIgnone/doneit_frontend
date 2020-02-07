@@ -1,0 +1,32 @@
+<div class="container">
+    <form (ngSubmit)='handleEventCreation()'>
+        <fieldset class="form-group">
+            <label>Titolo: </label>
+            <input type="text" class="form-control" name="title" [(ngModel)]='eventPost.title'>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Descrizione: </label>
+            <input type="text" class="form-control" name="description" [(ngModel)]='eventPost.description'>
+        </fieldset>
+
+        
+        <fieldset class = "form-group">
+            <label>Data: </label>
+            <input type = "date" name = "Data evento" [(ngModel)] = "eventPost.date">
+        </fieldset>
+        
+        <fieldset class = "form-group">
+            <label>Luogo: </label>
+            <input type = "text" name = "place" [(ngModel)] = "eventPost.place" ngx-google-places-autocomplete [options]="{
+                types: [],
+                componentRestrictions: { country: 'IT' }
+                }" #placesRef="ngx-places"  (onAddressChange)="handleAddressChange($event)"/>
+            
+        </fieldset>
+
+        <div style="text-align: right;">
+            <button *ngIf="!todoId" type="submit" class="btn btn-success">Crea</button>
+        </div>
+    </form>
+</div>

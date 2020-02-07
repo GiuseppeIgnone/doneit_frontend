@@ -1,0 +1,51 @@
+<nav *ngIf="isUserLoggedIn()" class="mb-1 navbar navbar-expand-lg sticky-top navbar-dark light-blue darken-3">
+  <a class="navbar-brand" href="#">Done It</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
+    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <ul class="navbar-nav ml-auto mr-auto">
+      <form class="form-inline" id="searchbar-form">
+        <div id="searchbar" class="md-form my-0">
+          <!-- <input id="search-input" class="form-control" type="text" placeholder="Cerca" aria-label="Search"> -->
+          <app-search></app-search>
+        </div>
+      </form>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav mr-auto nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link waves-effect waves-light">{{personalCard.wallet.cfu}}&nbsp;<i class="fa fa-credit-card"></i></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto nav-flex-icons">
+        <li class="nav-item ">
+          <a class="nav-link waves-effect waves-light">{{personalCard.user.name}}</a>
+        </li>
+        <li class="nav-item avatar">
+          <a class="nav-link p-0" href="#">
+            <img *ngIf="imagePath" [src]="imagePath" class="md-avatar rounded-circle" alt="avatar image">
+          </a>
+        </li>
+      </ul>
+    </ul>
+  </div>
+</nav>
+
+<div *ngIf="userAuth.isUserLoggedIn() && hideMenu()">
+  <app-user-info></app-user-info>
+
+  <!-- <button *ngIf="showChatButton()" id="floating-btn" type="button" class="btn btn-primary btn-circle btn-xl">
+    <i class="fa fa-comment"></i>
+  </button> -->
+
+  <div *ngIf="showChatButton()">
+    <app-chatbox></app-chatbox>
+  </div>
+
+
+</div>

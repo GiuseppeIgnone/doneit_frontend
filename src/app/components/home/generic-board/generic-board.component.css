@@ -1,0 +1,14 @@
+.container-fluid{
+    margin-top: 20px;
+}
+
+nav{
+    background-color: white;
+    border: solid 2px #1565c0;
+    border-radius: 5px;
+}
+
+a{
+    color: white !important;
+    font-size: large;
+}

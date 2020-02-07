@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 no-gutters" style="background-color: white;">
+            <div *ngFor="let e of eventList">
+                <app-event-card (messageEvent)="openMap($event)"
+                    (messageEventPartecipant)="openPartecipantModal($event)" [eventPost]="e"></app-event-card>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div (click)="closeMap()" *ngIf="isMapOpen" id="myModal" class="modal">
+    <div class="modal-content">
+        <span (click)="closeMap()" class="close">×</span>
+        <span id="modal-title">Mappa</span>
+        <iframe height="450" frameborder="0" style="border:0" [src]='sanitizeUrl()' allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+<div (click)="closePartecipantsModal()" *ngIf="isPartecipantsModalOpen" class="modal">
+    <div class="modal-content">
+        <span class="close" (click)="closePartecipantsModal()" *>×</span>
+        <span id="modal-title">Partecipanti</span>
+
+        <ul class="list-group list-group-flush" *ngFor="let p of partecipants">
+            <li class="list-group-item">{{p.user.username}}</li>
+        </ul>
+
+    </div>
+</div>

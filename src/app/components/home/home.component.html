@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+
+
+        <div class="alert alert-warning" *ngIf="isRegisterCompleted()" role="alert">
+            Non hai completato la registrazione. Per completarla, <a routerLink="/complete-register"
+                class="text-primary">clicca qui</a>
+        </div>
+
+        <div class="col-lg-9">
+            <app-generic-board></app-generic-board>
+        </div>
+
+    </div>
+</div>
